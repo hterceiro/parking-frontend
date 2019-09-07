@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Parking</title>
+    <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script type="text/javascript" src="estacionamento.js"></script>
+</head>
+<body>
+
+
+<div ng-app="estacionamento" class="container">
+
+    <h1>RENDIMENTOS DO DIA</h1>
+    <a href="estacionamento.html" class="btn btn-primary">VOLTAR</a>
+
+
+
+
+    <div ng-controller="Rest">
+
+        <form novalidate>
+            <div class="form-group">
+                <label class="control-label" for="dataInicial">Data Inicial</label>
+                <input type="date" class="form-control" ng-model="datas.dataInicial" name="dataInicial"
+                       id="dataInicial">
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="dataFinal">Data fim</label>
+                <input type="date" class="form-control" ng-model="datas.dataFinal" name="dataFinal"
+                       id="dataFinal">
+            </div>
+            <hr/>
+
+            <div class="form-group text-center">
+                <button type="submit" ng-click="getRendimento(datas)" class="btn btn-primary">BUSCAR</button>
+            </div>
+
+        </form>
+
+
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>NÚMERO DE REGISTRO</th>
+                <th>VLOR RECEBIDO</th>
+                <th>DATA DO RECEBIMENTO</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="rentimento in rendimentos">
+                <td>{{ rentimento.idArrecadacao }}</td>
+                <td>R$ {{ rentimento.valorArrecadado }}</td>
+                <td>{{ rentimento.dataArrecadacao }}</td>
+
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr ng-show="valorRendimento">
+                <td>TOTAL</td>
+                <td colspan="2">R$ {{valorRendimento}}</td>
+            </tr>
+            </tfoot>
+        </table>
+
+    </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Parking</title>
+    <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script type="text/javascript" src="estacionamento.js"></script>
+</head>
+<body>
+
+
+<div ng-app="estacionamento" class="container">
+
+    <h1>Parking</h1>
+    <a href="vaga-form.html" class="btn btn-primary">ADICIONAR VAGA</a>
+    <a href="vagas-disponiveis.html" class="btn btn-primary">VAGAS DISPONIVEIS</a>
+    <a href="estacionar-veiculo.html" class="btn btn-primary">ESTACIONAR VEICULO</a>
+    <a href="pagar-estacionamento.html" class="btn btn-primary">PAGAR ESTACIONAMENTO</a>
+    <a href="rendimentos.html" class="btn btn-primary">VER RENDIMENTOS</a>
+    <hr>
+    <div ng-controller="Rest" ng-init="listarVagas()">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>NÚMERO DE REGISTRO</th>
+                <th>VAGA</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="vaga in vagas">
+                <td>{{ vaga.idVaga }}</td>
+                <td>{{ vaga.fileira }} - {{ vaga.numero }}</td>
+
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Parking</title>
+    <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script type="text/javascript" src="estacionamento.js"></script>
+
+</head>
+<body>
+<div class="jumbotron" ng-app="estacionamento">
+    <h1 class="text-center">PAGAMENTO</h1>
+    <hr/>
+    <div class="alert alert-success" role="alert">
+        <a href="estacionamento.html" class="btn btn-primary">VOLTAR</a>
+    </div>
+    <div ng-controller="Rest" class="container">
+        <div  ng-init="listarTickets()">
+            <table class="table table-bordered">
+                <thead>
+                <tr>
+                    <th>CÓDIGO DO TICKET</th>
+                    <th>VAGA</th>
+                    <th>VALOR</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="ticket in tickets">
+                    <td>{{ ticket.idEstacionamento }}</td>
+                    <td>{{ ticket.vaga.fileira }} - {{ ticket.vaga.numero }}</td>
+                    <td>R$ {{ ticket.valorDevido }}</td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        <h3>PAGAR TICKET</h3>
+        <form novalidate>
+            <div class="form-group">
+                <label class="control-label" for="idEstacionamento">CÓDIGO DO TICKET</label>
+                <input type="text" class="form-control" ng-model="ticket.idEstacionamento" name="idEstacionamento"
+                       id="idEstacionamento">
+            </div>
+
+            <div class="form-group">
+                <label class="control-label" for="valorPago">VALOR R$</label>
+                <input type="text" class="form-control" ng-model="ticket.valorPago" name="valorPago"
+                       id="valorPago">
+            </div>
+            <hr/>
+
+            <div class="form-group text-center">
+                <button type="submit" ng-click="pagarEstacionamento(ticket)" class="btn btn-primary">Enviar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+</body>
+</html>

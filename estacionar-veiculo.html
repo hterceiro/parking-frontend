@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Parking</title>
+    <meta charset="UTF-8">
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+    <script type="text/javascript" src="estacionamento.js"></script>
+
+</head>
+<body>
+<div class="jumbotron" ng-app="estacionamento">
+    <h1 class="text-center">Estacionar</h1>
+    <hr/>
+    <div class="alert alert-success" role="alert">
+        <a href="estacionamento.html" class="btn btn-primary">VOLTAR</a>
+    </div>
+    <div ng-controller="Rest" class="container">
+
+        <form novalidate>
+            <div class="form-group">
+                <label class="control-label" for="placa">Placa</label>
+                <input type="text" class="form-control" ng-model="veiculo.placa" name="placa"
+                       id="placa">
+            </div>
+
+            <div class="form-group" ng-init="listarVagasDisponiveis()">
+                <label class="control-label">Vagas</label>
+                <select name="idVaga" id="idVaga" ng-model="veiculo.idVaga" class="form-control">
+                    <option ng-repeat="vaga in vagas" value="{{ vaga.idVaga }}">{{ vaga.fileira }} - {{ vaga.numero }}</option>
+                </select>
+            </div>
+            <hr/>
+
+            <div class="form-group text-center">
+                <button type="submit" ng-click="estacionarVeiculo(veiculo)" class="btn btn-primary">Enviar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+</body>
+</html>
